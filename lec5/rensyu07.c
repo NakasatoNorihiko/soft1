@@ -72,16 +72,16 @@ void s_qsort(char *v[], int left, int right)
     if (left >= right) {        /* leftがrightと一致(=配列の要素が1)の時は */
         return;                 /* 何もせずに終了 */
     }
-    swap(v, left, (left+right)/2); /* 一番左と真ん中を交換 */
-    last = left;
-    for (i = left+1; i <= right; i++) {
-        if (strcmp(v[i], v[left]) < 0) {
-            last++;
-            swap(v, last, i);
+    swap(v, left, (left+right)/2); /* 一番左と真ん中を交換(交換後の一番左が基準) */
+    last = left;                   /* 一番左が交換対象(実際は交換されない) */
+    for (i = left+1; i <= right; i++) { /* 一番右まで */
+        if (strcmp(v[i], v[left]) < 0) { /* 一番左よりも辞書配列で小さいものがあったら */
+            last++;                      /* 交換対象は今までの+1されたもので */
+            swap(v, last, i);            /* 基準と小さかったものを交換する(つまり小さいものを一番左の近くに寄せる */
         }
     }
-    swap(v, left, last);
-    s_qsort(v, left, last-1);
+    swap(v, left, last);        /* 基準だったものを交換対象になった部分の一番右に移す(それより左側は必ず基準よりも小さい */
+    s_qsort(v, left, last-1);   /* これを左側と右側で繰り返す */
     s_qsort(v, last+1, right);
 }
 
