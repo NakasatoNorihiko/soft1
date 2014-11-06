@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAXLINES 5000
+
+int readlines(char *lineptr[], int nlines);
+
+int main()
+{
+    
+}
+
+/* readlines: 引数 文字列を指し示すポインタ, 読み込める最大行数 */
+/* 返り値 読み込んだ行数 */
+int readlines(char *lineptr[], int nlines)
+{
+    

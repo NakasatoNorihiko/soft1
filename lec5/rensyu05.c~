@@ -1,0 +1,12 @@
+#include <stdio.h>
+
+void s_strcpy(char *s, char *t);
+
+int main()
+{
+}
+
+void s_strcpy(char *s, char *t)
+{
+    
+}
